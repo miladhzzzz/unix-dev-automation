@@ -27,6 +27,10 @@ chmod +x ./setup-kali.sh
 ./setup-kali.sh
 ````
 
+## Dotfiles
+
+we have gathered some minimal and unchanged config files for various platforms that you can also pull from this repo and configure your tools with our entrypoint init.sh!
+
 ## infrastructure as code
 
 in this repo we are setting up everything needed for a local dev environment in different Operating Systems including Linux/Mac (No WINDOWS!!) using a combination of Kind , Localstack , Virtualbox to run labs easily!
