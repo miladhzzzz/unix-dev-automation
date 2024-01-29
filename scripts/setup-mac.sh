@@ -23,3 +23,9 @@ brew install visual-studio-code
 
 # installing oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# installing localstack
+brew install localstack/tap/localstack-cli
+
+# install aws cli
+brew install awscli-local
