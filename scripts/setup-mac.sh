@@ -9,7 +9,7 @@ brew install kind
 # installing docker
 brew install docker
 
-# nstalling terraform
+# installing terraform
 brew install terraform
 
 # installing ansible
