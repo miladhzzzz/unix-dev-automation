@@ -3,19 +3,23 @@
 # installing kubectl
 brew install kubectl
 
-#installing kind
+# installing kind
 brew install kind
 
-#installing docker
+# installing docker
 brew install docker
 
-#installing terraform
+# nstalling terraform
 brew install terraform
 
-#installing ansible
+# installing ansible
 brew install ansible
 
-#install virtualbox
+# install virtualbox
 brew install virtualbox
 
+# installing vsc
+brew install visual-studio-code
 
+# installing oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
