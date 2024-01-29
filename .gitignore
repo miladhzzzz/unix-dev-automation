@@ -2,3 +2,4 @@
 terraform.tfstate
 virtualbox.box
 .terraform.lock.hcl
+.vscode
