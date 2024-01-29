@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # installing kubectl
 brew install kubectl
