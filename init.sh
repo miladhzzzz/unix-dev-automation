@@ -46,7 +46,7 @@ deploy_infrastructure() {
 
 # Function to run the Ansible playbooks
 run_ansible_playbooks() {
-	ansible-playbook -i playbooks/ssh-nginx
+	ansible-playbook -i .hosts.ini playbooks/nginx/playbook.yml
 }
 
 # Main script logic
