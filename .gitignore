@@ -1,5 +1,10 @@
 .terraform
 terraform.tfstate
+.terraform.tfstate.lock.info
 virtualbox.box
 .terraform.lock.hcl
 .vscode
+hosts.ini
+automate
+automate.pub
+terraform.tfstate.backup
