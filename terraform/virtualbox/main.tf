@@ -29,7 +29,8 @@ resource "virtualbox_vm" "node" {
 
   network_adapter {
     type           = "bridged"
-    host_interface = "eth0"
+    host_interface = "eth0" #this is the linux configuration
+    #host_interface = "en0" this is the macos configuration
   }
 }
 
