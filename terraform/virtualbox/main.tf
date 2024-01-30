@@ -1,32 +1,44 @@
 terraform {
   required_providers {
     virtualbox = {
-      source = "terra-farm/virtualbox"
+      source  = "terra-farm/virtualbox"
       version = "0.2.2-alpha.1"
     }
   }
 }
 
-# There are currently no configuration options for the provider itself.
-
 resource "virtualbox_vm" "node" {
-  count     = 1
+  count     = 2
   name      = format("node-%02d", count.index + 1)
-  image     = "https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20180903.0.0/providers/virtualbox.box"
+  # image     = "https://vagrantcloud.com/ubuntu/boxes/xenial64/versions/20180420.0.0/providers/virtualbox.box"
+  image       = "virtualbox.box"
   cpus      = 1
-  memory    = "1024 mib"
-  # user_data = file("${path.module}/user_data")
+  memory    = "512 mib"
+
+# configuring the sshd_config file
+
+ user_data = <<-EOF
+    #!/bin/bash
+
+    # Modify sshd_config
+    sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+    # Restart SSH service
+    sudo systemctl restart sshd
+  EOF
 
   network_adapter {
-    type           = "bridge"
-    host_interface = "vboxnet1"
+    type           = "bridged"
+    host_interface = "eth0"
   }
 }
 
-output "IPAddr" {
-  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 1)
+# writing the ip address of the machines created to ansible hosts.ini file located at root of project dir
+resource "null_resource" "write_hosts" {
+  count = length(virtualbox_vm.node)
+
+  provisioner "local-exec" {
+    command = "echo '${element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, count.index)}' >> ../../hosts.ini"
+  }
 }
 
-# output "IPAddr_2" {
-#  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 2)
-#}
